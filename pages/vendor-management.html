@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GalaxyItt Vendor Management System</title>
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+        }
+
+        .active-nav {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 0.5rem;
+        }
+
+        .page-section {
+            display: none;
+        }
+
+        #vendors-content {
+            display: block;
+            /* Make vendors content visible by default */
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .responsive-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 flex flex-col md:flex-row">
+    <!-- Sidebar -->
+    <div class="w-64 bg-indigo-900 text-white min-h-screen p-6 sidebar">
+        <div class="text-center mb-10">
+            <img src="/api/placeholder/128/128" alt="GalaxyItt Logo"
+                class="mx-auto w-32 h-32 object-contain rounded-full mb-4">
+            <h2 class="text-2xl font-bold">Vendor Portal</h2>
+        </div>
+
+        <nav class="space-y-2">
+            <a href="dashboard.html" class="nav-link block py-2 px-4 hover:bg-indigo-700 rounded transition duration-300">
+                <i class="fas fa-tachometer-alt mr-3"></i>Dashboard
+            </a>
+            <a href="vendor-management.html" class="nav-link block py-2 px-4 hover:bg-indigo-700 rounded transition duration-300 active-nav">
+                <i class="fas fa-users mr-3"></i>Vendor Management
+            </a>
+            <a href="vendor-registration.html" class="nav-link block py-2 px-4 hover:bg-indigo-700 rounded transition duration-300">
+                <i class="fas fa-user-plus mr-3"></i>New Vendor Registration
+            </a>
+            <a href="job-tracking.html" class="nav-link block py-2 px-4 hover:bg-indigo-700 rounded transition duration-300">
+                <i class="fas fa-briefcase mr-3"></i>Job Tracking
+            </a>
+            <a href="reports.html" class="nav-link block py-2 px-4 hover:bg-indigo-700 rounded transition duration-300">
+                <i class="fas fa-chart-line mr-3"></i>Reports
+            </a>
+        </nav>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="flex-1 max-h-screen overflow-y-auto main-content">
+        <!-- Top Navigation -->
+        <div class="bg-white shadow-md p-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <input type="text" placeholder="Search vendors, jobs..." class="px-3 py-2 border rounded-lg w-64 mr-4">
+                <button class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+            <div class="flex items-center">
+                <div class="mr-4">
+                    <span class="font-semibold">Admin User</span>
+                    <p class="text-sm text-gray-500">System Administrator</p>
+                </div>
+                <button class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
+                    <i class="fas fa-sign-out-alt mr-2"></i>Logout
+                </button>
+            </div>
+        </div>
+
+        <div id="vendors-content" class="page-section p-6">
+            <h1 class="text-3xl font-bold text-indigo-900 mb-6">Vendor Management</h1>
+
+            <div class="bg-white p-6 rounded-lg shadow-md overflow-x-auto">
+                <div class="flex justify-between mb-6">
+                    <h2 class="text-2xl font-semibold">Registered Vendors</h2>
+                <a href="vendor-registration.html"> <button class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
+                        <i class="fas fa-plus mr-2"></i>Add New Vendor
+                    </button>
+                    </a>
+                </div>
+
+                <table class="w-full">
+                    <thead>
+                        <tr class="bg-gray-100 text-gray-600">
+                            <th class="p-3 text-left">Company Name</th>
+                            <th class="p-3 text-left">Contact Person</th>
+                            <th class="p-3 text-left">Category</th>
+                            <th class="p-3 text-left">Status</th>
+                            <th class="p-3 text-left">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b">
+                            <td class="p-3">TechSolutions Inc.</td>
+                            <td class="p-3">Jane Doe</td>
+                            <td class="p-3">IT Services</td>
+                            <td class="p-3"><span
+                                    class="bg-green-100 text-green-600 px-2 py-1 rounded-full">Active</span></td>
+                            <td class="p-3 flex">
+                                <button class="text-blue-500 mr-3" title="View Details">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="text-yellow-500 mr-3" title="Edit">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="text-red-500" title="Deactivate">
+                                    <i class="fas fa-ban"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="border-b">
+                            <td class="p-3">CloudWorks Ltd.</td>
+                            <td class="p-3">John Smith</td>
+                            <td class="p-3">Cloud Services</td>
+                            <td class="p-3"><span
+                                    class="bg-yellow-100 text-yellow-600 px-2 py-1 rounded-full">Pending</span>
+                            </td>
+                            <td class="p-3 flex">
+                                <button class="text-blue-500 mr-3" title="View Details">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="text-yellow-500 mr-3" title="Edit">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="text-red-500" title="Deactivate">
+                                    <i class="fas fa-ban"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    // Remove active state from all links
+                    navLinks.forEach(navLink => navLink.classList.remove('active-nav'));
+
+                    // Add active state to clicked link
+                    e.currentTarget.classList.add('active-nav');
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

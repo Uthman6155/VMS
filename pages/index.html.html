@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GalaxyItt Vendor Portal</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('vendor-management-hero.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        .login-modal {
+            display: none;
+        }
+        .login-modal.active {
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="bg-indigo-900 text-white p-4 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="company-logo.png" alt="GalaxyItt Logo" class="h-10 mr-3">
+                <span class="text-xl font-bold">GalaxyItt</span>
+            </div>
+            <div>
+                <button id="loginBtn" class="bg-white text-indigo-900 px-4 py-2 rounded hover:bg-indigo-100 transition">
+                    Vendor Login
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section text-white py-20">
+        <div class="container mx-auto text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">Vendor Management Portal</h1>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Streamline your vendor relationships with our comprehensive management system</p>
+            <div class="space-x-4">
+                <button id="learnMoreBtn" class="bg-indigo-600 text-white px-6 py-3 rounded hover:bg-indigo-700 transition">
+                    Learn More
+                </button>
+                <button id="registerBtn" class="bg-white text-indigo-900 px-6 py-3 rounded hover:bg-indigo-100 transition">
+                    Register as Vendor
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-indigo-900">Key Features</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                    <div class="text-indigo-600 text-4xl mb-4">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Vendor Management</h3>
+                    <p>Easily manage all your vendors in one centralized platform with complete profiles and status tracking.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                    <div class="text-indigo-600 text-4xl mb-4">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Job Tracking</h3>
+                    <p>Track all jobs and projects assigned to vendors with real-time updates and status monitoring.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                    <div class="text-indigo-600 text-4xl mb-4">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Analytics & Reports</h3>
+                    <p>Generate detailed reports and gain insights into vendor performance and relationship metrics.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="login-modal fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-md">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-bold text-indigo-900">Vendor Login</h2>
+                    <button id="closeModal" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <form id="loginForm" class="space-y-4">
+                    <div>
+                        <label for="email" class="block mb-2 font-medium">Email Address</label>
+                        <input type="email" id="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+                    </div>
+                    <div>
+                        <label for="password" class="block mb-2 font-medium">Password</label>
+                        <input type="password" id="password" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <input type="checkbox" id="remember" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
+                            <label for="remember" class="ml-2 block text-sm text-gray-700">Remember me</label>
+                        </div>
+                        <a href="#" class="text-sm text-indigo-600 hover:text-indigo-800">Forgot password?</a>
+                    </div>
+                    <button type="submit" class="w-full bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                        Login
+                    </button>
+                </form>
+                <div class="mt-4 text-center">
+                    <p class="text-gray-600">Don't have an account? <a href="#" class="text-indigo-600 hover:text-indigo-800">Contact administrator</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginBtn = document.getElementById('loginBtn');
+            const closeModal = document.getElementById('closeModal');
+            const loginModal = document.getElementById('loginModal');
+            const loginForm = document.getElementById('loginForm');
+            
+            // Toggle login modal
+            loginBtn.addEventListener('click', () => {
+                loginModal.classList.add('active');
+            });
+            
+            closeModal.addEventListener('click', () => {
+                loginModal.classList.remove('active');
+            });
+            
+            // Close modal when clicking outside
+            loginModal.addEventListener('click', (e) => {
+                if (e.target === loginModal) {
+                    loginModal.classList.remove('active');
+                }
+            });
+            
+            // Form submission
+            loginForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                // Add login validation and AJAX call here
+                alert('Login form would be submitted to the server here');
+                // On successful login, redirect to dashboard
+                // window.location.href = 'vendor-management-app.html';
+            });
+        });
+    </script>
+</body>
+</html>
